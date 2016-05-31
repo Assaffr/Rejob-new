@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		 <link rel="icon" type="image/png" href="images/favicon.png">
+		
+		<link rel="stylesheet" href="style/main.css">
+		
+		<title>Rejob</title>
+		<script src="js/app/angular.min.js"></script>
+		<script src="js/app/app.js"></script>
+		
+		<script src="js/app/Directivs.js"></script>
+		<script src="js/app/Factory.js"></script>
+		<script src="js/app/Providers.js"></script>
+	</head>
+
+<body ng-app="App">
+	
+	<div class="wrapper" ng-controller="MainController">
+		<div class="bk" ng-hide="FormSuccess">	
+			<section id="headline">
+				<img alt="בואו להחליף קריירה ברגע." src="images/web/web-07.svg">
+			</section>
+			
+			<section id="mid">
+				<div>
+					<h2>בדיקת 
+					<br class="mb">
+					התאמה חינם</h2>
+					<img src="images/web_before3.png">
+				</div>
+				
+				<div>
+					<h2>קורס מעשי 
+					<br class="mb">
+					על חשבוננו</h2>
+					<img src="images/web_before1.png">
+				</div>
+				
+				<div>
+					<h2>עבודה בחברות 
+					<br class="mb">
+					בינלאומיות</h2>
+					<img src="images/web_before2.png">
+				</div>
+			
+			</section>
+	
+			
+			<section>
+			
+				<div id="form-wrapper">
+					
+					<p>השאירו פרטים אישיים ונחזור אליכם בהקדם</p>
+				
+					<form class="get-form" role="form" name="Form" novalidate>
+						<div>
+							<div class="input-wrapper">
+									
+								  	<input type="text" name="fullName" ng-model="visitor.name" id="full-neme" autocomplete="off" placeholder="שם מלא" ng-pattern="/^[a-zA-Zא-ת ]+$/" required>
+
+									<input type="text" name="phone" ng-model="visitor.phone" id="phone" autocomplete="off" placeholder="טלפון" ng-pattern="/^([+]{0,1}[0-9]{2,5}[-]{0,1}[0-9]{7,9})$/" required>
+									
+									<input type="email" name="email" ng-model="visitor.email" id="email" autocomplete="off" placeholder='דוא"ל' required>
+									
+									<input id="f02" type="file" name="cvFile" ng-model="visitor.cvFile" accept=".doc, .docx, .txt, .pdf, .odt, .ods, .odp" valid-file="myFile"><!--ng-change="applyFileName()" file-model="myFile" valid-file required -->
+									
+									<label for="f02">
+										<span>{{visitor.cand_cv_path}}</span>
+										<i class="upload-icon"></i>
+									</label>
+								
+								<button type="submit" class="btn" ng-click="sendForm(visitor)">שלח</button>
+								<span ng-show="Form.$submitted && Form.$invalid">
+									<span class="error_all err_name" ng-show="Form.fullName.$error.required || Form.fullName.$error.pattern"> *This field is invalid! </span>
+									<span class="error_all err_phone" ng-show="Form.phone.$error.required || Form.phone.$error.pattern"> *This field is invalid! </span>
+									<span class="error_all err_mail" ng-show="Form.email.$error.required || Form.email.$error.email"> *This field is invalid! </span>
+									<span class="error_all err_file" ng-show="Form.cvFile.$error.required"> *CV file is required! </span>
+								</span>
+								<div class="C-B"></div>
+							</div>
+						</div>
+					
+					</form>
+					<div class="C-B"></div>
+				</div>
+				<img class="left_side_logo" alt="Rejob" src="images/web/web-05.svg">
+				<div class="C-B"></div>
+			</section>
+			
+	
+		</div>
+		
+		<div class="done" ng-show="FormSuccess">
+			<!-- <img class="main" src="images/after.png">  -->
+		</div>
+		
+	</div>
+	
+	
+</body>
+</html>
